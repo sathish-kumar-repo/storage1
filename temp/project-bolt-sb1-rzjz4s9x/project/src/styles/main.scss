@@ -1,0 +1,291 @@
+@import 'variables';
+
+// Reset and base styles
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  line-height: $line-height-base;
+  color: $neutral-800;
+  background-color: $neutral-50;
+  transition: background-color $animation-speed-normal $animation-easing;
+  
+  &.dark-mode {
+    color: $neutral-100;
+    background-color: $neutral-900;
+  }
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $animation-speed-fast $animation-easing;
+  
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: $line-height-heading;
+  margin-bottom: $spacing-md;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 $spacing-lg;
+  }
+}
+
+// Button styles
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all $animation-speed-normal $animation-easing;
+  border: none;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  &-primary {
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary-color, 7%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-secondary {
+    background-color: $secondary-color;
+    color: $neutral-800;
+    
+    &:hover {
+      background-color: darken($secondary-color, 7%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  &-accent {
+    background-color: $accent-color;
+    color: $neutral-800;
+    
+    &:hover {
+      background-color: darken($accent-color, 7%);
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.my-sm { margin-top: $spacing-sm; margin-bottom: $spacing-sm; }
+.my-md { margin-top: $spacing-md; margin-bottom: $spacing-md; }
+.my-lg { margin-top: $spacing-lg; margin-bottom: $spacing-lg; }
+.my-xl { margin-top: $spacing-xl; margin-bottom: $spacing-xl; }
+
+.py-sm { padding-top: $spacing-sm; padding-bottom: $spacing-sm; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+.py-lg { padding-top: $spacing-lg; padding-bottom: $spacing-lg; }
+.py-xl { padding-top: $spacing-xl; padding-bottom: $spacing-xl; }
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn $animation-speed-normal $animation-easing forwards;
+}
+
+.slide-up {
+  animation: slideUp $animation-speed-normal $animation-easing forwards;
+}
+
+// Card styles
+.card {
+  background-color: white;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-md;
+  transition: transform $animation-speed-normal $animation-easing, 
+              box-shadow $animation-speed-normal $animation-easing;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+  
+  .dark-mode & {
+    background-color: $neutral-800;
+  }
+}
+
+// Glass effect
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+// Grid system
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: $spacing-lg;
+  
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: $breakpoint-xl) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Section styles
+.section {
+  padding: $spacing-2xl 0;
+}
+
+// Flex utilities
+.flex {
+  display: flex;
+  
+  &-center {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &-between {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &-column {
+    flex-direction: column;
+  }
+}
+
+// 3D Canvas container
+.canvas-container {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: $breakpoint-md) {
+    height: 50vh;
+  }
+}
+
+// Theme toggle
+.theme-toggle {
+  position: fixed;
+  top: $spacing-lg;
+  right: $spacing-lg;
+  z-index: $z-index-tooltip;
+  background: none;
+  border: none;
+  color: currentColor;
+  cursor: pointer;
+  padding: $spacing-sm;
+  border-radius: $border-radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($neutral-200, 0.3);
+  backdrop-filter: blur(5px);
+  
+  &:hover {
+    background-color: rgba($neutral-300, 0.4);
+  }
+  
+  .dark-mode & {
+    background-color: rgba($neutral-700, 0.5);
+    
+    &:hover {
+      background-color: rgba($neutral-600, 0.6);
+    }
+  }
+}

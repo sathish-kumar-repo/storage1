@@ -1,0 +1,151 @@
+// Fade animations
+.fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+.fade-out {
+  animation: fadeOut var(--transition-normal) forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+// Slide animations
+.slide-up {
+  animation: slideUp var(--transition-normal) forwards;
+}
+
+.slide-down {
+  animation: slideDown var(--transition-normal) forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+// Staggered animations for lists
+.stagger-in > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerIn var(--transition-normal) forwards;
+}
+
+@for $i from 1 through 20 {
+  .stagger-in > *:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.05}s;
+  }
+}
+
+@keyframes staggerIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+// Pulse animation for attention
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+// Shimmer effect for loading states
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.05);
+  
+  .dark & {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0)
+    );
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+// Float animation for cards
+.float {
+  transition: transform var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-8px);
+  }
+}
+
+// Scale animation for buttons
+.scale {
+  transition: transform var(--transition-fast);
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+// Rotate animation for icons
+.rotate {
+  transition: transform var(--transition-normal);
+  
+  &:hover {
+    transform: rotate(15deg);
+  }
+}
+
+// Page transitions
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}

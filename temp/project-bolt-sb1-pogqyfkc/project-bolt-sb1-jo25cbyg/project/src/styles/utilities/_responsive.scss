@@ -1,0 +1,189 @@
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 481px) and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1025px) {
+    @content;
+  }
+}
+
+// Responsive utility classes
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.hidden-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.hidden-laptop {
+  @include laptop {
+    display: none !important;
+  }
+}
+
+.hidden-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none;
+  @include mobile {
+    display: block;
+  }
+}
+
+.tablet-only {
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+
+.laptop-only {
+  display: none;
+  @include laptop {
+    display: block;
+  }
+}
+
+.desktop-only {
+  display: none;
+  @include desktop {
+    display: block;
+  }
+}
+
+// Responsive spacing adjustments
+.responsive-spacing {
+  padding: var(--space-xl);
+  
+  @include laptop {
+    padding: var(--space-lg);
+  }
+  
+  @include tablet {
+    padding: var(--space-md);
+  }
+  
+  @include mobile {
+    padding: var(--space-sm);
+  }
+}
+
+// Responsive font sizes
+.responsive-heading {
+  font-size: 3rem;
+  
+  @include laptop {
+    font-size: 2.5rem;
+  }
+  
+  @include tablet {
+    font-size: 2rem;
+  }
+  
+  @include mobile {
+    font-size: 1.75rem;
+  }
+}
+
+.responsive-text {
+  font-size: 1.125rem;
+  
+  @include laptop {
+    font-size: 1.0625rem;
+  }
+  
+  @include tablet {
+    font-size: 1rem;
+  }
+  
+  @include mobile {
+    font-size: 0.9375rem;
+  }
+}
+
+// Responsive flex directions
+.responsive-flex {
+  display: flex;
+  
+  @include tablet {
+    flex-direction: column;
+  }
+  
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+// Responsive grid adjustments
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Responsive layout containers
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  
+  @include tablet {
+    padding: 0 var(--space-md);
+  }
+  
+  @include mobile {
+    padding: 0 var(--space-sm);
+  }
+}
+
+.narrow-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  
+  @include tablet {
+    padding: 0 var(--space-md);
+  }
+  
+  @include mobile {
+    padding: 0 var(--space-sm);
+  }
+}

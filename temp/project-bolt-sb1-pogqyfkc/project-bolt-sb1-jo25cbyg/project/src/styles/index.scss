@@ -1,0 +1,28 @@
+// Base styles
+@import './base/reset';
+@import './base/variables';
+@import './base/typography';
+
+// Components
+@import './components/glassmorphism';
+@import './components/buttons';
+@import './components/cards';
+@import './components/colorPicker';
+@import './components/slider';
+@import './components/switcher';
+@import './components/themeTemplates';
+
+// Layout
+@import './layout/header';
+@import './layout/sidebar';
+@import './layout/main';
+@import './layout/footer';
+
+// Pages
+@import './pages/home';
+@import './pages/tutorials';
+@import './pages/settings';
+
+// Utilities
+@import './utilities/animations';
+@import './utilities/responsive';
